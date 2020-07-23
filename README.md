@@ -9,6 +9,6 @@ The recipes and ingredientes are originally from the website Koch-Wiki (https://
 
 Website: magiccooking.herokuapp.com/
 
-![Logo Magic Cooking](https://github.com/sloschert/magic_cooking/blob/master/flask_app/static/images/LOGO_TRANSPARENCIA.png)
+![Logo Magic Cooking](/flask_app/static/images/LOGO_TRANSPARENCIA.png)
 
-Logo by Florencia Prats.
+*(Logo by Florencia Prats.)*
