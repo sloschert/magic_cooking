@@ -49,8 +49,8 @@ def recipe_recommender(user_input:set, max_recipes=7):
         # Problem: very short recipes with e.g. 1 ingredient.
         # --> Solution:
         # #
-        # if len(all_ingredients) > 2 and intersection == len(all_ingredients):
-        #     jaccard = 1
+        if len(all_ingredients) > 2 and intersection == len(all_ingredients):
+            jaccard = 1
 
         return jaccard
 
@@ -97,9 +97,3 @@ def recipe_recommender(user_input:set, max_recipes=7):
         list_of_lists.append([i.name, i.description, i.ingredients, i.url])
 
     return list_of_lists
-
-#
-# import os
-# os.chdir("flask_app/")
-# pwd
-# recipe_recommender(set(["Karotte"]), max_recipes=7)
