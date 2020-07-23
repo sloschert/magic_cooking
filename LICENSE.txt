@@ -1,0 +1,4 @@
+Many recipes and ingredientes are originally from the website Koch-Wiki (https://www.kochwiki.org/).
+The license of Kochwiki (CREATIVE COMMONS PUBLIC LICENSE, CC BY-SA 3.0): https://www.kochwiki.org/wiki/Koch-Wiki:Lizenzbestimmungen
+
+This app is published under the CC BY-SA 3.0 license: https://creativecommons.org/licenses/by-sa/3.0/

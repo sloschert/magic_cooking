@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a href="/">
+<button type="button" name="button">Zurück zur Zutatenauswahl</button>
+</a>
+<h2>
+Meine Empfehlungen für dich:
+</h2>
+
+
+<div id="based_on">
+  <p>
+  Basierend auf:
+  </p>
+  <ul>
+    {% for ing in user_ingredients %}
+    <li>{{ing}}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+  {% for recipe in recommendations %}
+  <div class="recipe_name">
+    <h2>
+    {{ recipe[0] }}
+    </h2>
+  </div>
+
+  <div class="recipe_description">
+    {{ recipe[1] }}
+  </div>
+
+  <div class="recipe_ingredients">
+    <p>Zutaten:</p>
+    <ul>
+    {% for ingredient in recipe[2]%}
+    <li>{{ingredient}}</li>
+    {% endfor %}
+  </ul>
+  </div>
+
+  <div class="recipe_url">
+    <a href="{{ recipe[3] }}">{{ recipe[3] }}</a>
+  </div>
+
+  <br>
+  <hr>
+  {% endfor %}
+
+
+<a href="/">
+<button type="button" name="button">Zurück zur Zutatenauswahl</button>
+</a>
+
+{% endblock %}

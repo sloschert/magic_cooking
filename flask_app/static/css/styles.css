@@ -1,0 +1,25 @@
+body {
+  background-color: powderblue;
+  background-image: url("../images/LOGO_TRANSPARENCIA.png");
+  background-position: right;
+  background-size: contain;
+  font-family: sans-serif;
+  margin: 35px;
+
+}
+
+div.recipe_name {
+
+  font-style: italic;
+}
+
+#based_on {
+
+  font-style: italic;
+}
+
+.ingredients_proposed_checkbox {
+
+  height: 20px;
+  width: 20px;
+}
