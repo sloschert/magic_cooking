@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<div class="wrapper">
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/static/js/jquery.flexdatalist.min.js"></script>
+<link href="/static/css/jquery.flexdatalist.min.css" rel="stylesheet" type="text/css">
+
+ <script>
+ $('.flexdatalist').flexdatalist({
+   minLength: 1
+});
+ </script>
+
+
+<form action="/results">
+
+  <p>
+  Welche Zutaten hast du zu Hause?
+  </p>
+
+  <input type="text"
+  placeholder="Bestätige Zutaten mit Enter"
+  class="flexdatalist"
+  multiple="multiple"
+  data-min-length='1'
+  name="user_ingredient1"
+  list="ingredients"
+  >
+
+  <datalist id="ingredients">
+
+
+    {% for l in list_of_ingredients %}
+    <option value="{{ l }}">{{ l }}</option>
+    {% endfor %}
+
+  </datalist>
+
+  <hr>
+  <p>
+  Du kannst auch Zutaten aus dieser Liste hinzufügen:<br>
+  </p>
+
+  {% for i in most_used_ingredients %}
+  <input type="checkbox" class="ingredients_proposed_checkbox" name="ingredient_proposed{{ i }}" value="{{ i }}">
+  <label for="{{ i }}"> {{ i }}</label><br>
+  {% endfor %}
+
+  <hr>
+  <br>
+  <input id="submit_recipes" type="submit" value="Was kann ich damit kochen?">
+</form>
+</div>
+
+
+
+{% endblock %}
