@@ -8,6 +8,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+
+@app.route('/chose_ingredients')
+def chose_ingredients():
 
     most_used_ingredients = []
     list_of_ingredients = []
@@ -20,7 +25,7 @@ def index():
         for line in f:
             list_of_ingredients.append(line.strip())
 
-    return render_template('index.html', most_used_ingredients=most_used_ingredients, list_of_ingredients=list_of_ingredients)
+    return render_template('chose_ingredients.html', most_used_ingredients=most_used_ingredients, list_of_ingredients=list_of_ingredients)
 
 @app.route('/results')
 def results():
