@@ -31,6 +31,10 @@ def recipe_recommender(user_input:set, max_recipes=7):
                 intersection = intersection + a[i]
             # else:
             #     print(i, "not in series")
+        print("Intersection", intersection)
+        print("Union", union)
+        print("Len_Union", len(union))
+
         len_union = len(union)
         if len_union == 0:
             len_union = 0.001
@@ -87,13 +91,21 @@ def recipe_recommender(user_input:set, max_recipes=7):
     df_onehot["jaccard"] = df_onehot.apply(calc_jaccard_index, 1)
 
     top_recipes = df_onehot.jaccard.sort_values(ascending=False)[:max_recipes]
-    print(top_recipes)
+    print("Top recipes\n", top_recipes)
 
-    list_of_series = []
-    for i in top_recipes.index:
-        list_of_series.append(recipes.loc[i])
-    list_of_lists = []
-    for i in list_of_series:
-        list_of_lists.append([i.name, i.description, i.ingredients, i.url])
+    if top_recipes[0] != 0.0:
 
-    return list_of_lists
+        list_of_series = []
+        for i in top_recipes.index:
+            list_of_series.append(recipes.loc[i])
+
+        print("List of series", list_of_series)
+
+        list_of_lists = []
+        for c, i in enumerate(list_of_series):
+            list_of_lists.append([i.name, i.description, i.ingredients, i.url, top_recipes[c].round(2)])
+
+        print("list_of_lists", list_of_lists)
+        return list_of_lists
+    else:
+        return None
