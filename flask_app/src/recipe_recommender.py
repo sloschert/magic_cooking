@@ -41,8 +41,8 @@ def recipe_recommender(user_input:set, max_recipes=15):
         jaccard = jaccard - (len(all_ingredients) - intersection) * ALPHA
         return jaccard
 
-    DEFAULT_ING = ["Salz", "Pfeffer", "Wasser", "Meersalz"]
-    recipes = pd.read_csv("flask_app/data/recipes4_4170.csv", converters={'ingredients': eval, 'categories': eval}, index_col=0)
+    DEFAULT_ING = ["Salz", "Pfeffer", "Wasser"]
+    recipes = pd.read_csv("flask_app/data/recipes5_4170_translated.csv", converters={'ingredients': eval, 'categories': eval}, index_col=0)
     ## Read data from pickle-file
     #recipes = pd.read_pickle("flask_app/data/recipes4_4170.pickle")
 
