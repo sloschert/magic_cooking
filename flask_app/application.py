@@ -31,10 +31,8 @@ def chose_ingredients():
 def results():
     user_input = dict(request.args)
     user_input_values = list(user_input.values()) #   list(user_input.values())
-    print("user_input_values", user_input_values)
     # unpack the multiple inputs recieved by the jQuery input-fields
     u1 = [i.split(",") for i in user_input_values]
-    print("u1", u1)
     u2 = []
     for i in u1:
         for j in i:
@@ -45,10 +43,7 @@ def results():
         u2.remove("")
     except:
         pass
-    print("u2", u2)
     user_ingredients = set(u2)
-    print("user_ingredients:", user_ingredients)
-
     recommendations = recipe_recommender(user_ingredients)
     #print(recommendations)
     return render_template('results.html', recommendations=recommendations, user_ingredients=list(user_ingredients))
