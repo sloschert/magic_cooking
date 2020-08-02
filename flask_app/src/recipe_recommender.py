@@ -31,9 +31,6 @@ def recipe_recommender(user_input:set, max_recipes=7):
                 intersection = intersection + a[i]
             # else:
             #     print(i, "not in series")
-        print("Intersection", intersection)
-        print("Union", union)
-        print("Len_Union", len(union))
 
         len_union = len(union)
         if len_union == 0:
@@ -99,13 +96,10 @@ def recipe_recommender(user_input:set, max_recipes=7):
         for i in top_recipes.index:
             list_of_series.append(recipes.loc[i])
 
-        print("List of series", list_of_series)
-
         list_of_lists = []
         for c, i in enumerate(list_of_series):
             list_of_lists.append([i.name, i.description, i.ingredients, i.url, top_recipes[c].round(2)])
 
-        print("list_of_lists", list_of_lists)
         return list_of_lists
     else:
         return None
