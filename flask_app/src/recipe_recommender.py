@@ -36,8 +36,8 @@ def recipe_recommender(user_input:set, max_recipes=15):
         if len_union == 0:
             len_union = 0.001
         jaccard = intersection / len_union
-        # punishes ingredients NOT in common
-        ALPHA = 0.1
+        # Alpha punishes ingredients NOT in common. A higher Alpha makes recipes shorter and better fits.
+        ALPHA = 0.07
         jaccard = jaccard - (len(all_ingredients) - intersection) * ALPHA
         return jaccard
 
