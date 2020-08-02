@@ -42,11 +42,11 @@
 
   <hr>
   <p>
-  Du kannst auch Zutaten aus dieser Liste hinzufügen:<br>
+  Hast du die folgenden Zutaten zu Hause?<br>
   </p>
 
   {% for i in most_used_ingredients %}
-  <input type="checkbox" class="ingredients_proposed_checkbox" name="ingredient_proposed{{ i }}" value="{{ i }}">
+  <input type="checkbox" class="ingredients_proposed_checkbox" name="ingredient_proposed{{ i }}" value="{{ i }}" checked>
   <label for="{{ i }}"> {{ i }}</label><br>
   {% endfor %}
 
