@@ -2,7 +2,7 @@ import pandas as pd
 from numpy import sum as numpySum
 from sklearn.preprocessing import MultiLabelBinarizer
 
-def recipe_recommender(user_input:set, max_recipes=7):
+def recipe_recommender(user_input:set, max_recipes=15):
     """
     INPUT:
     user input (set)
@@ -23,6 +23,7 @@ def recipe_recommender(user_input:set, max_recipes=7):
         RETURNS:
         Jaccard Index (integer between 0 and 1)
         """
+
         all_ingredients = recipes.loc[ a.name ].ingredients  # ingredients for each onehotencoded row (recipe)
         union = user_input.union(all_ingredients) # union of user ingredients and recipe ingredients
         intersection = 0 # intersection between user and recipe ingredients
@@ -37,6 +38,10 @@ def recipe_recommender(user_input:set, max_recipes=7):
             len_union = 0.001
         jaccard = intersection / len_union
 
+        # punishes ingredients NOT in common
+        ALPHA = 0.1
+        jaccard = jaccard - (len(all_ingredients) - intersection) * ALPHA
+
         # intersection_over_recipe_length = intersection/len(all_ingredients)
         # print("Übereinstimmung / Rezeptlänge", intersection_over_recipe_length)
 
@@ -50,8 +55,8 @@ def recipe_recommender(user_input:set, max_recipes=7):
         # Problem: very short recipes with e.g. 1 ingredient.
         # --> Solution:
         # #
-        if len(all_ingredients) > 2 and intersection == len(all_ingredients):
-            jaccard = 1
+        # if len(all_ingredients) > 2 and intersection == len(all_ingredients):
+        #     jaccard = 1
 
         return jaccard
 
